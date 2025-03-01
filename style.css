@@ -1,0 +1,20 @@
+html,body {
+height: 100%;
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
+body {
+    background:  linear-gradient(to bottom, #080614 0%,#0d0920 25%,#161330 50%,#181631 75%,#0d0d1f 100%);
+    /* its been 4 days since I started learning this AND IT TOOK ME SO LONG JUST TO SAVE A GRADIENT */
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+}
+
+  h1{
+text-align: center;
+  }
+  
+ 
+ 
