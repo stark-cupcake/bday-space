@@ -23,15 +23,16 @@ canvas {
 
   .logo{
     position: absolute;
-    top: 35%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8);
     text-align: center;
+    white-space: nowrap;
   
 }
 .subtitle {
@@ -39,11 +40,12 @@ canvas {
   top: 45%; /* Adjust this so it appears below the title */
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 20px;
+  font-size: 18px;
   font-family: 'Times New Roman', Times, serif;
   color: rgba(255, 255, 150, 0.9); /* Slightly dimmer than the title */
   text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
   text-align: center;
+  max-width: 80%;
 }
 
   #wishMessage {
