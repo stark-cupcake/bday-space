@@ -104,7 +104,11 @@
     drawShootingStars();
     requestAnimationFrame(animateShootingStars);
   }
-  setInterval(createShootingStar, 5000);
+
+  setTimeout(() => {
+  createShootingStar();
+  setInterval(createShootingStar, 10000);
+}, 4000);
 
   animateShootingStars();
 </script>
