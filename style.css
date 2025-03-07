@@ -58,4 +58,21 @@ canvas {
     transition: opacity 0.5s ease-in-out;
   }
 
-
+  @media (max-width: 600px) {
+    .logo {
+      font-size: 40px;
+      top: 25%;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+      top: 38%;
+      max-width: 90%;
+    }
+  
+    #wishMessage {
+      font-size: 20px; /* Smaller for mobile */
+      top: 15%;
+    }
+  }
+  
