@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fading Letter</title>
+    <style>
+        /* Enhanced Sunset to Night Gradient */
+        body {
+            background: linear-gradient(to bottom,#fff,#FBD786, #caa433, #544a7d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Old Aesthetic Letter Paper */
+        .letter-container {
+            width: 600px;
+            padding: 40px;
+            background: #fdf5e6;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            border: 2px solid #d4a373;
+            font-family: 'Courier New', monospace;
+            background-image: url('pics/aged-paper.jpg'); /* Custom image */
+            background-size: cover;
+            background-blend-mode: multiply;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 50px;
+            filter: contrast(1.2) brightness(0.9);
+            position: relative;
+        }
+
+        .letter-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(rgba(0, 0, 0, 0.2), transparent);
+            border-radius: 10px;
+        }
+
+        /* Typing and Fading Effect */
+        .line {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            white-space: nowrap;
+            overflow: hidden;
+            display: block;
+            opacity: 1;
+            color: #2C2C54;
+        }
+
+        .fade {
+            transition: opacity 2s ease-out;
+            opacity: 0;
+        }
+
+        /* Last Line Glowing */
+        .last-line {
+            opacity: 0;
+            font-weight: bold;
+            display: inline-block;
+            color: #FFD700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            transition: opacity 2s ease-in;
+        }
+
+        /* Firefly Effect */
+        .firefly {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 150, 0.7);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(255, 255, 150, 0.8);
+            animation: flicker 3s infinite alternate, move 10s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes move {
+            0% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-30px) translateX(15px); }
+            100% { transform: translateY(0) translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <p class="line" id="line1"></p>
+        <p class="line" id="line2"></p>
+        <p class="line" id="line3"></p>
+        <p class="line" id="line4"></p>
+        <p class="last-line" id="lastLine"></p>
+    </div>
+
+    <script>
+        function typeText(element, text, speed, callback) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else if (callback) {
+                    setTimeout(callback, 1000);
+                }
+            }
+            type();
+        }
+
+        function fadeOut(element) {
+            setTimeout(() => {
+                element.classList.add("fade");
+            }, 1500);
+        }
+
+        const typingSpeed = 50;
+
+        typeText(document.getElementById("line1"), "I write this knowing it will never reach you.", typingSpeed, function () {
+            fadeOut(document.getElementById("line1"));
+            typeText(document.getElementById("line2"), "Every word I choose disappears before it finds its place.", typingSpeed, function () {
+                fadeOut(document.getElementById("line2"));
+                typeText(document.getElementById("line3"), "Like echoes in space, like stars that died before we saw them.", typingSpeed, function () {
+                    fadeOut(document.getElementById("line3"));
+                    typeText(document.getElementById("line4"), "Maybe, in some universe, the words remain.", typingSpeed, function () {
+                        fadeOut(document.getElementById("line4"));
+
+                        let lastLine = document.getElementById("lastLine");
+                        lastLine.style.opacity = "1";
+                        typeText(lastLine, "This letter will never be sent, but maybe, in some universe, you'll hear it.", typingSpeed, function () {
+                            lastLine.style.textShadow = "0 0 20px rgba(255, 215, 0, 0.6)";
+                            setTimeout(() => {
+                                lastLine.style.textShadow = "0 0 30px rgba(255, 215, 0, 0.8)";
+                            }, 2000);
+                        });
+                    });
+                });
+            });
+        });
+
+        function createFireflies(num) {
+            for (let i = 0; i < num; i++) {
+                let firefly = document.createElement("div");
+                firefly.classList.add("firefly");
+                firefly.style.top = Math.random() * 100 + "vh";
+                firefly.style.left = Math.random() * 100 + "vw";
+                firefly.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(firefly);
+            }
+        }
+
+        createFireflies(20);
+    </script>
+
+</body>
+</html>
+
+        
